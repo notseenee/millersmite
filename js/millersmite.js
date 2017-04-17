@@ -129,7 +129,7 @@ var hammer = new Hammer(canvas);
 hammer.get('pinch').set({ enable: true });
 hammer.on('pinchmove', function(event){
 
-	var scaleLinear = 0.05;
+	var scaleLinear = 0.03;
 
 	if (event.scale > 1.00) scale += scaleLinear;
 	if (event.scale < 1.00) scale -= scaleLinear;
@@ -161,11 +161,13 @@ var doneButton = document.getElementById('doneButton'),
 		newButton  = document.getElementById('newButton'),
 		editor     = document.getElementById('editor'),
 		final      = document.getElementById('final'),
-		output     = document.getElementById('output');
+		output     = document.getElementById('output'),
+		outputLink = document.getElementById('outputLink');
 doneButton.onmouseup = function() {
 	editor.style.display = 'none';
 	final.style.display = 'block';
 	output.src = canvas.toDataURL('image/jpeg', 0.9);
+	outputLink.href = canvas.toDataURL('image/jpeg', 0.9);
 }
 editButton.onmouseup = function() {
 	editor.style.display = 'block';
